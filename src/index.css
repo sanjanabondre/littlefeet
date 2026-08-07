@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+body{
+  margin:0;
+  padding:0;
+  background:#FFF8FC;
+  font-family:'Poppins',sans-serif;
+  color:#333;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family:'Baloo 2',cursive;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+button{
+  cursor:pointer;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
