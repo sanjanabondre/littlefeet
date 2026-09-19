@@ -1,0 +1,42 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_20-ca1e1aa4fe24b4fd666c26bfb7931626601c1733",
+  "solcVersion": "0.8.20",
+  "solcLongVersion": "0.8.20+commit.a1b79de6",
+  "compilerType": "solc",
+  "userSourceNameMap": {
+    "contracts/Transaction.sol": "project/contracts/Transaction.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "shanghai",
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/Transaction.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract Transaction {\r\n\r\n    event PaymentSent(\r\n        address indexed sender,\r\n        address indexed receiver,\r\n        uint256 amount\r\n    );\r\n\r\n    function sendPayment(\r\n        address payable receiver\r\n    ) external payable {\r\n\r\n        require(\r\n            msg.value > 0,\r\n            \"Amount must be greater than zero\"\r\n        );\r\n\r\n        require(\r\n            receiver != address(0),\r\n            \"Invalid receiver address\"\r\n        );\r\n\r\n        receiver.transfer(msg.value);\r\n\r\n        emit PaymentSent(\r\n            msg.sender,\r\n            receiver,\r\n            msg.value\r\n        );\r\n    }\r\n\r\n    function getBalance()\r\n        external\r\n        view\r\n        returns (uint256)\r\n    {\r\n        return address(this).balance;\r\n    }\r\n}"
+      }
+    }
+  }
+}
